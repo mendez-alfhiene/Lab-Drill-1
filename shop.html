@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="icon" href="bakery.JPG" type="image/png">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-image: url('background.PNG');
+            background-size: cover;
+            background-position: center;
+        }
+
+        header {
+            background-color: #f8c471;
+            color: black;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            background-color: #f7dc6f;
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #e67e22;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            text-align: center;
+            font-size: 22px;
+        }
+
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .shop-item {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .shop-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .shop-item h3 {
+            font-size: 22px;
+            color: black;
+            margin-bottom: 15px;
+        }
+
+        .shop-item button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #e67e22;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .shop-item button:hover {
+            background-color: #d35400;
+        }
+
+        .cart {
+            margin-top: 20px;
+            padding: 0px;
+            border: 1px solid #ddd;
+            background: #fff;
+            text-align: center;
+        }
+
+        .cart ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cart li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart .remove-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .modal .close {
+            color: red;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>Bakery Shop</header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="about-us.html">About Us</a>
+        <a href="shop.html">Shop</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="container">
+        <h2>Shop Our Products</h2>
+        <div class="shop-grid">
+            <div class="shop-item"><h3>Cakes & Cupcakes</h3><button onclick="openModal('cake & cupcakes')">Choose Items</button></div>
+            <div class="shop-item"><h3>Pastries & Croissants</h3><button onclick="openModal('pastries & croissants')">Choose Items</button></div>
+            <div class="shop-item"><h3>Bread</h3><button onclick="openModal('bread')">Choose Items</button></div>
+            <div class="shop-item"><h3>Cookies & Biscuits</h3><button onclick="openModal('cookies & biscuits')">Choose Items</button></div>
+            <div class="shop-item"><h3>Muffins & Donuts</h3><button onclick="openModal('muffins & donuts')">Choose Items</button></div>
+            <div class="shop-item"><h3>Pies & Tarts</h3><button onclick="openModal('pies & tarts')">Choose Items</button></div>
+        </div>
+    </div>
+
+    <div class="cart">
+        <h2>Your Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: $<span id="cart-total">0</span></p>
+        <button onclick="checkout()">Checkout</button>
+    </div>
+
+    <footer>Programmer and Developed by: Mary Alfhiene Princess Mendez</footer>
+
+    <script>
+        let cart = [];
+
+        function openModal(category) {
+            let choices = {
+                'cake & cupcakes': ['Chocolate Cake - $50', 'Vanilla Sponge Cake - $50', 'Red Velvet Cake - $30', 'Cheesecake - $30', 'Black forest cake - $30', 'Cupcakes (various flavor) - $40'],
+                'pastries & croissants': ['Butter Croissant - $5', 'Almond Croissant - $4', 'Danish Pastry (cheese) - $6', 'Danish Pastry (fruit) - $6', 'Danish Pastry (cinnamon) - $6'],
+                'bread': ['Sourdough - $8', 'Whole Grain - $7', 'Baguettes - $6', 'Ciabatta - $8', 'Brioche - $6'],
+                'cookies & biscuits': ['Chocolate Chips Cookies - $5', 'Sugar Cookies - $3', 'Gluten-Free Cookies - $4', 'Oatmeal Cookies - $5', 'Shortbread Cookies - $10', 'Macarons - $5', 'Gingerbread Cookies - $5'],
+                'muffins & donuts': ['Blueberry Muffins - $5', 'Chocolate Chip Muffins - $5', 'Glazed Donuts - $5', 'Filled Donuts(custard) - $7', 'Filled Donuts(jam) - $7', 'Filled Donuts(chocolate) - $7'],
+                'pies & tarts': ['Apple Pie - $9', 'Cherry Pie - $9', 'Lemon Tart - $9', 'Fruit Tart - $9']
+            };
+            
+            let items = choices[category];
+            let buttons = items.map(item => `<button onclick="addToCart('${item}')">${item}</button>`).join('<br>');
+            let modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `<div class='modal-content'><span class='close' onclick='closeModal(this)'>&times;</span><h2>Choose an Item</h2>${buttons}</div>`;
+            document.body.appendChild(modal);
+            modal.style.display = 'block';
+        }
+
+        function closeModal(closeBtn) {
+            closeBtn.parentElement.parentElement.remove();
+        }
+
+        function addToCart(item) {
+            cart.push(item);
+            updateCart();
+            document.querySelector('.modal').remove();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+            alert("Your cart is empty!");
+            return;
+        }
+
+        let total = cart.reduce((total, item) => total + parseInt(item.match(/\$(\d+)/)[1]), 0);
+        alert(`Thank you for your purchase! Your total is $${total}.`);
+
+        cart = []; // Clear the cart after checkout
+        updateCart(); // Update the UI
+        }
+
+        function updateCart() {
+            let cartList = document.getElementById("cart-items");
+            cartList.innerHTML = cart.map((item, index) => `
+            <li>
+                ${item} 
+                <button class='remove-btn' onclick='removeFromCart(${index})'>Remove</button>
+            </li>
+            `).join('');
+            document.getElementById("cart-total").innerText = cart.reduce((total, item) => total + parseInt(item.match(/\$(\d+)/)[1]), 0);
+        }
+    </script>
+</body>
+</html>

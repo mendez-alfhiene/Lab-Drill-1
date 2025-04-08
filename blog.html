@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="icon" href="bakery.JPG" type="image/png">
+    <style>
+        /* Reset and General Styles */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fafafa;
+            color: #333;
+            line-height: 1.6;
+            background-image: url('background.PNG');
+            background-size: ;
+            background-position: center;
+        }
+
+        /* Header */
+        header {
+            background-color: #f8c471;
+            color: black;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #f7dc6f;
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #e67e22;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section h2 {
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            color: black;
+            margin-bottom: 30px;
+        }
+
+        /* Content */
+        .content {
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+
+        .sub-section {
+            margin-top: 30px;
+        }
+
+        .sub-section h3 {
+            font-size: 24px;
+            color: #e67e22;
+            margin-bottom: 20px;
+        }
+
+        .sub-section p {
+            font-size: 18px;
+            color: #555;
+        }
+        /* Footer */
+        footer {
+            background-color: #f8c471;
+            color: black;
+            text-align: center;
+            padding: 25px;
+            font-size: 14px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        Bakery Shop
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="about-us.html">About Us</a>
+        <a href="shop.html">Shop</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="container">
+        <!-- Blog Section -->
+        <section id="blog" class="section">
+            <h2>Our Blog</h2>
+            <div class="content">
+                <div class="sub-section">
+                    <h3>Baking Tips</h3>
+                    <p>Get expert advice on how to bake the perfect treats:</p>
+                    <ul>
+                        <li><strong>Temperature Control:</strong> Always preheat your oven and use an oven thermometer for accuracy.</li>
+                        <li><strong>Ingredient Quality:</strong> Use fresh baking powder, yeast, and high-quality flour.</li>
+                        <li><strong>Mixing Techniques:</strong> Avoid overmixing batter to prevent dense cakes.</li>
+                        <li><strong>Measuring Accuracy:</strong> Weigh ingredients with a digital scale for consistency.</li>
+                    </ul>
+                </div>
+                <div class="sub-section">
+                    <h3>Recipes</h3>
+                    <p>Here are the step-by-step on how to cook the following:</p>
+                    <ul>
+                        <li><strong>Cookies:</strong> Chocolate chip cookies, Sugar Cookies, Gluten-free Cookies.</li>
+                        <li><strong>Cakes:</strong> Red velvet, vanilla sponge, etc.</li>
+                        <li><strong>Breads:</strong> Sourdough, Whole Grain, and Baguettes.</li>
+                        <li><strong>Pastries:</strong> Cupcakes, Muffins and Croissants.</li>
+                    </ul>
+                </div>
+                <div class="sub-section">
+                    <h3>Event Updates</h3>
+                    <p>Stay tuned for upcoming bakery events, promotions, and special offers:</p>
+                    <ul>
+                        <li><strong>Spring Baking Workshop:</strong> April 15 - Learn to bake artisan bread.</li>
+                        <li><strong>Mother's Day Special:</strong> May 12 - Exclusive cake discounts.</li>
+                        <li><strong>Summer Cupcake Contest:</strong> June 20 - Show off your baking skills!</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        Programmer and Developed by: Mary Alfhiene Princess Mendez
+    </footer>
+</body>
+</html>

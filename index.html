@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Page</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-image: url('background.PNG');
+      background-position: center;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #f8c471;
+      color: black;
+      padding: 30px;
+      text-align: center;
+      font-size: 36px;
+    }
+
+    .container {
+      text-align: center;
+      padding: 30px;
+        
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      color: black;
+      font-size: 32px;
+    }
+
+    button {
+      background-color: #ff7043;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #d84315;
+    }
+
+        /* Modal Login Form */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      text-align: center;
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    footer {
+      color: black;
+      text-align: center;
+      padding: 10px;
+      margin-top: 300px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Welcome to the Bakery Shop
+  </header>
+
+  <div class="container">
+    <h2>Login to Continue</h2>
+    <button onclick="openModal()">Login</button>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal" id="loginModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Login</h2>
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+      <button onclick="login()">Submit</button>
+    </div>
+  </div>
+
+  <footer>
+    Programmer and Developed by: Mary Alfhiene Princess Mendez
+  </footer>
+
+  <script>
+    let attempts = 0;
+    const maxAttempts = 2;
+    let isLocked = false;
+
+    function openModal() {
+      if (isLocked) {
+        alert("Please wait before trying again.");
+        return;
+      }
+      document.getElementById("loginModal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("loginModal").style.display = "none";
+    }
+
+    function hashPassword(password) {
+      return btoa(password); // Basic hashing (not secure for real applications)
+    }
+
+    function login() {
+      if (isLocked) {
+        alert("You are locked out. Please wait.");
+        return;
+      }
+
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const correctUsername = "admin123";
+      const correctPasswordHash = btoa("admin123"); // Hashed password
+
+      if (username === correctUsername && hashPassword(password) === correctPasswordHash) {
+        alert("Login Successful! Redirecting...");
+        window.location.href = "home.html";
+      } else {
+        attempts++;
+        if (attempts >= maxAttempts) {
+          alert("Too many failed attempts. Please wait 10 seconds.");
+          lockLogin();
+        } else {
+          alert("Incorrect username or password. Please try again.");
+        }
+      }
+    }
+
+    function lockLogin() {
+      isLocked = true;
+      let countdown = 10;
+      const interval = setInterval(() => {
+        if (countdown === 0) {
+          clearInterval(interval);
+          isLocked = false;
+          attempts = 0;
+          alert("You can try logging in again.");
+        }
+        countdown--;
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

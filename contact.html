@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="icon" href="C:\MENDEZ MARY ALFHIENE PRICESS 2B WST/bakery.JPG. " type="image/png">
+    <style>
+        /* Reset and General Styles */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fafafa;
+            color: #333;
+            line-height: 1.6;
+            background-image: url('background.PNG.');
+            background-size: ;
+            background-position: center;
+        }
+
+        /* Header */
+        header {
+            background-color: #f8c471;
+            color: black;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #f7dc6f;
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #e67e22;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section h2 {
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            color: black;
+            margin-bottom: 30px;
+        }
+
+        /* Content */
+        .content {
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+
+        .sub-section {
+            margin-top: 30px;
+        }
+
+        .sub-section h3 {
+            font-size: 24px;
+            color: #e67e22;
+            margin-bottom: 20px;
+        }
+
+        .sub-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .sub-section ul li {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        /* Shop Section */
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .shop-item {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .shop-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .shop-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .shop-item-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .shop-item-content h3 {
+            font-size: 22px;
+            color: #e67e22;
+            margin-bottom: 15px;
+        }
+
+        .shop-item-content p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .shop-item-content button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #e67e22;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .shop-item-content button:hover {
+            background-color: #d35400;
+        }
+
+        /* Footer */
+        footer {
+            color: black;
+            text-align: center;
+            padding: 25px;
+            font-size: 14px;
+            margin-top: 470px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            .section h2 {
+                font-size: 28px;
+            }
+
+            nav {
+                flex-direction: column;
+            }
+
+            .shop-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <body>
+        <!-- Header -->
+    <header>
+        Bakery Shop
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="about-us.html">About Us</a>
+        <a href="shop.html">Shop</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="container">
+    <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2>Contact Us</h2>
+            <div class="content">
+                <p>Facebook: Mary Alfhiene Princess Mendez</p>
+                <p>Email: <a href="maryalfhienemendez@gmail.com">maryalfhienemendez@gmail.com</a></p>
+                <p>Phone: 09124620526</p>
+                <p>Address: Quirino St., San Jose, Occidental Mindoro</p>
+            </div>
+        </section>
+    </div>
+
+        <!-- Footer -->
+    <footer>
+        Programmer and Developed by: Mary Alfhiene Princess Mendez
+    </footer>
+</body>
+</html>
